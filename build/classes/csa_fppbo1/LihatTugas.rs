@@ -1,0 +1,10 @@
+com.mycompany.fppbo.LihatTugas$1
+com.mycompany.fppbo.LihatTugas$2
+com.mycompany.fppbo.LihatTugas$3
+com.mycompany.fppbo.LihatTugas$4
+com.mycompany.fppbo.LihatTugas
+com.mycompany.fppbo.LihatTugas$9
+com.mycompany.fppbo.LihatTugas$5
+com.mycompany.fppbo.LihatTugas$6
+com.mycompany.fppbo.LihatTugas$7
+com.mycompany.fppbo.LihatTugas$8

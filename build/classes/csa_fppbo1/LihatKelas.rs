@@ -1,0 +1,9 @@
+com.mycompany.fppbo.LihatKelas$6
+com.mycompany.fppbo.LihatKelas$5
+com.mycompany.fppbo.LihatKelas$8
+com.mycompany.fppbo.LihatKelas$7
+com.mycompany.fppbo.LihatKelas$2
+com.mycompany.fppbo.LihatKelas$1
+com.mycompany.fppbo.LihatKelas$4
+com.mycompany.fppbo.LihatKelas$3
+com.mycompany.fppbo.LihatKelas
