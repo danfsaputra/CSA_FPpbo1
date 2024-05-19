@@ -17,8 +17,19 @@ public class Register extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    
+    dbconnection koneksi;
+    
     public Register() {
         initComponents();
+        
+        koneksi = new dbconnection();
+        conn = koneksi.getConnection();
+        
     }
 
     /**
@@ -30,32 +41,32 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldNama = new javax.swing.JTextField();
+        jTextFieldNpm = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField1.setBorder(null);
-        jTextField1.setVerifyInputWhenFocusTarget(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNama.setBackground(new java.awt.Color(218, 218, 218));
+        jTextFieldNama.setBorder(null);
+        jTextFieldNama.setVerifyInputWhenFocusTarget(false);
+        jTextFieldNama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldNamaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 215, 300, 40));
+        getContentPane().add(jTextFieldNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 215, 300, 40));
 
-        jTextField2.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNpm.setBackground(new java.awt.Color(218, 218, 218));
+        jTextFieldNpm.setBorder(null);
+        jTextFieldNpm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldNpmActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 315, 300, 40));
+        getContentPane().add(jTextFieldNpm, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 315, 300, 40));
 
         jButton1.setBackground(new java.awt.Color(218, 218, 218));
         jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -74,16 +85,20 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNamaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNamaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldNpmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNpmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNpmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        String nama = jTextFieldNama.getText();
+        String npm = jTextFieldNpm.getText();
+        
         HalamanUtama ht = new HalamanUtama();
         ht.setVisible(true);
         this.setVisible(false);
@@ -128,7 +143,7 @@ public class Register extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldNama;
+    private javax.swing.JTextField jTextFieldNpm;
     // End of variables declaration//GEN-END:variables
 }
