@@ -87,7 +87,7 @@ public class Register extends javax.swing.JFrame {
 
             if (rs.next()) {
                 // Jika data sudah ada, arahkan ke HalamanUtama
-                HalamanUtama hu = new HalamanUtama(nama);
+                HalamanUtama hu = new HalamanUtama(nama, npm);
                 hu.setVisible(true);
                 this.setVisible(false);
             } else {
@@ -98,7 +98,7 @@ public class Register extends javax.swing.JFrame {
                 insertStmt.setString(2, npm);
                 insertStmt.executeUpdate();
 
-                HalamanUtama hu = new HalamanUtama(nama);
+                HalamanUtama hu = new HalamanUtama(nama, npm);
                 hu.setVisible(true);
                 this.setVisible(false);
             }

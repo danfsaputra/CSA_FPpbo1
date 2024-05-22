@@ -11,6 +11,7 @@ package csa_fppbo1;
 public class HalamanUtama extends javax.swing.JFrame {
 
     
+    private String npm;
     private String nama;
     
     /**
@@ -20,7 +21,8 @@ public class HalamanUtama extends javax.swing.JFrame {
         initComponents();
     }
     
-    public HalamanUtama(String nama) {
+    public HalamanUtama(String nama, String npm) {
+        this.npm = npm;
         this.nama = nama;
         initComponents();
         // Setel teks label dengan nama yang diterima
@@ -141,7 +143,7 @@ public class HalamanUtama extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        TambahJadwal tj = new TambahJadwal();
+        TambahJadwal tj = new TambahJadwal(npm, nama);
         tj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed

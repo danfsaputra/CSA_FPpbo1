@@ -4,19 +4,28 @@
  */
 package csa_fppbo1;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+import database.dbconnection;
 /**
  *
  * @author ASUS TUF
  */
-public class TambahJadwal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame1
-     */
+    public class TambahJadwal extends javax.swing.JFrame {
+        private String npm;
+        private String nama;
+    
     public TambahJadwal() {
         initComponents();
     }
 
+    public TambahJadwal(String npm,String nama) {
+        this.npm = npm;
+        this.nama = nama;
+        initComponents();
+        // Setel teks label dengan nama yang diterima
+        jLabel1.setText("Selamat datang, " + nama);
+                }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,12 +36,12 @@ public class TambahJadwal extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jButtonSimpanMatkul = new javax.swing.JButton();
+        jTextFieldJam = new javax.swing.JTextField();
+        jTextFieldMataKuliah = new javax.swing.JTextField();
+        jTextFieldHari = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,67 +57,83 @@ public class TambahJadwal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 632, 60, 20));
 
-        jButton6.setBackground(new java.awt.Color(218, 218, 218));
-        jButton6.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButton6.setText("Simpan");
-        jButton6.setBorder(null);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSimpanMatkul.setBackground(new java.awt.Color(218, 218, 218));
+        jButtonSimpanMatkul.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButtonSimpanMatkul.setText("Simpan");
+        jButtonSimpanMatkul.setBorder(null);
+        jButtonSimpanMatkul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonSimpanMatkulActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 483, 80, 20));
+        getContentPane().add(jButtonSimpanMatkul, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 483, 80, 20));
 
-        jTextField1.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField1.setBorder(null);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 405, 300, 20));
+        jTextFieldJam.setBackground(new java.awt.Color(218, 218, 218));
+        jTextFieldJam.setBorder(null);
+        getContentPane().add(jTextFieldJam, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 405, 300, 20));
 
-        jTextField2.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldMataKuliah.setBackground(new java.awt.Color(218, 218, 218));
+        jTextFieldMataKuliah.setBorder(null);
+        jTextFieldMataKuliah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldMataKuliahActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 13, 280, 40));
+        getContentPane().add(jTextFieldMataKuliah, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 300, 20));
 
-        jTextField3.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 300, 20));
+        jTextFieldHari.setBackground(new java.awt.Color(218, 218, 218));
+        jTextFieldHari.setBorder(null);
+        getContentPane().add(jTextFieldHari, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 277, 300, 20));
 
-        jTextField4.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField4.setBorder(null);
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 277, 300, 20));
+        jLabel1.setBackground(new java.awt.Color(218, 218, 218));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 280, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Kelas.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Kelas.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        HalamanUtama hu = new HalamanUtama();
+        HalamanUtama hu = new HalamanUtama(nama, npm);
         hu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonSimpanMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSimpanMatkulActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        String hari = jTextFieldHari.getText();
+        String mataKuliah = jTextFieldMataKuliah.getText();
+        String jam = jTextFieldJam.getText();
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        try {
+            dbconnection koneksi = new dbconnection();
+            Connection conn = koneksi.getConnection();
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+            String insertSql = "INSERT INTO schedule (hari, mata_kuliah, jam, npm) VALUES (?, ?, ?, ?)";
+            PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+            insertStmt.setString(1, hari);
+            insertStmt.setString(2, mataKuliah);
+            insertStmt.setString(3, jam);
+            insertStmt.setString(4, npm);
+            insertStmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Jadwal berhasil disimpan!");
+
+            // Setelah menyimpan, kembali ke halaman utama
+            HalamanUtama hu = new HalamanUtama(nama, npm);
+            hu.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButtonSimpanMatkulActionPerformed
+
+    private void jTextFieldMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMataKuliahActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldMataKuliahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,11 +187,11 @@ public class TambahJadwal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton jButtonSimpanMatkul;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextFieldHari;
+    private javax.swing.JTextField jTextFieldJam;
+    private javax.swing.JTextField jTextFieldMataKuliah;
     // End of variables declaration//GEN-END:variables
 }
