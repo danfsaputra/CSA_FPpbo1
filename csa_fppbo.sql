@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 04:43 PM
+-- Generation Time: May 21, 2024 at 05:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,17 @@ CREATE TABLE `register` (
   `npm` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `register`
+--
+
+INSERT INTO `register` (`id`, `nama`, `npm`) VALUES
+(2, 'Siti Aisyah', '22081010234'),
+(5, 'dhani', '22081010089'),
+(9, 'Bara', '22081010001'),
+(12, 'septi', '22081010150'),
+(13, 'raja', '22081010138');
+
 -- --------------------------------------------------------
 
 --
@@ -41,9 +52,10 @@ CREATE TABLE `register` (
 
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
-  `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
+  `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu') NOT NULL,
   `mata_kuliah` varchar(100) NOT NULL,
   `jam` time NOT NULL,
+  `tanggal_kalender` date NOT NULL,
   `npm` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -93,7 +105,7 @@ ALTER TABLE `tugas`
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `schedule`
