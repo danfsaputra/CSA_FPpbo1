@@ -10,11 +10,21 @@ package csa_fppbo1;
  */
 public class HalamanUtama extends javax.swing.JFrame {
 
+    
+    private String nama;
+    
     /**
      * Creates new form NewJFrame1
      */
     public HalamanUtama() {
         initComponents();
+    }
+    
+    public HalamanUtama(String nama) {
+        this.nama = nama;
+        initComponents();
+        // Setel teks label dengan nama yang diterima
+        jLabel2.setText("Selamat datang, " + nama);
     }
 
     /**
