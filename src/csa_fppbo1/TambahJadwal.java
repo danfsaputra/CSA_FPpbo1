@@ -19,9 +19,9 @@ import database.dbconnection;
         initComponents();
     }
 
-    public TambahJadwal(String npm,String nama) {
-        this.npm = npm;
+    public TambahJadwal(String nama,String npm) {
         this.nama = nama;
+        this.npm = npm;
         initComponents();
         // Setel teks label dengan nama yang diterima
         jLabel1.setText("Selamat datang, " + nama);

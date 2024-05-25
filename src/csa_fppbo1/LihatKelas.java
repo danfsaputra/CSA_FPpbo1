@@ -9,14 +9,20 @@ package csa_fppbo1;;
  * @author ASUS TUF
  */
 public class LihatKelas extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame1
-     */
+    private String nama;
+    private String npm;
+    
     public LihatKelas() {
         initComponents();
     }
-
+    
+    public LihatKelas(String nama,String npm) {
+        this.nama = nama;
+        this.npm = npm;
+        initComponents();
+        // Setel teks label dengan nama yang diterima
+        jLabel3.setText("Selamat datang, " + nama);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +81,7 @@ public class LihatKelas extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        HalamanUtama hu = new HalamanUtama();
+        HalamanUtama hu = new HalamanUtama(nama, npm);
         hu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton10ActionPerformed

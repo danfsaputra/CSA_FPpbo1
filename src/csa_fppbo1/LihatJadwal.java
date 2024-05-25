@@ -9,12 +9,19 @@ package csa_fppbo1;
  * @author ASUS TUF
  */
 public class LihatJadwal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame1
-     */
+     private String npm;
+     private String nama;
+     
     public LihatJadwal() {
         initComponents();
+    }
+    
+    public LihatJadwal(String nama, String npm){
+        this.nama = nama;
+        this.npm = npm;
+        initComponents();
+        // Setel teks label dengan nama yang diterima
+        jLabel1.setText("Selamat datang, " + nama);
     }
 
     /**
@@ -35,16 +42,16 @@ public class LihatJadwal extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jLabelTanggal = new javax.swing.JLabel();
+        jLabelJ4 = new javax.swing.JLabel();
+        jLabelJ1 = new javax.swing.JLabel();
+        jLabelJ2 = new javax.swing.JLabel();
+        jLabelJ3 = new javax.swing.JLabel();
+        jLabelT4 = new javax.swing.JLabel();
+        jLabelT1 = new javax.swing.JLabel();
+        jLabelT2 = new javax.swing.JLabel();
+        jLabelT3 = new javax.swing.JLabel();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
@@ -153,27 +160,27 @@ public class LihatJadwal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 510, 20, 11));
 
-        jLabel2.setText("Nama");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
+        jLabel1.setText("Nama");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
 
-        jLabel3.setText("Tanggal");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 20));
+        jLabelTanggal.setText("Tanggal");
+        getContentPane().add(jLabelTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 20));
 
-        jLabel4.setText("Jadwal 1");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 508, 150, -1));
+        jLabelJ4.setText("Jadwal 1");
+        getContentPane().add(jLabelJ4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 508, 150, -1));
 
-        jLabel5.setText("Jadwal 1");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 178, 150, -1));
+        jLabelJ1.setText("Jadwal 1");
+        getContentPane().add(jLabelJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 178, 150, -1));
 
-        jLabel6.setText("Jadwal 1");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 288, 150, -1));
+        jLabelJ2.setText("Jadwal 1");
+        getContentPane().add(jLabelJ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 288, 150, -1));
 
-        jLabel7.setText("Jadwal 1");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 398, 150, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 550, 280, 40));
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 280, 40));
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 280, 40));
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 280, 40));
+        jLabelJ3.setText("Jadwal 1");
+        getContentPane().add(jLabelJ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 398, 150, -1));
+        getContentPane().add(jLabelT4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 550, 280, 40));
+        getContentPane().add(jLabelT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 280, 40));
+        getContentPane().add(jLabelT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 280, 40));
+        getContentPane().add(jLabelT3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 280, 40));
 
         jButton21.setBackground(new java.awt.Color(218, 218, 218));
         jButton21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -235,7 +242,7 @@ public class LihatJadwal extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        MenuLihatJadwal mlj = new MenuLihatJadwal();
+        MenuLihatJadwal mlj = new MenuLihatJadwal(nama, npm);
         mlj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -246,28 +253,28 @@ public class LihatJadwal extends javax.swing.JFrame {
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
-        TambahTugas tt = new TambahTugas();
+        TambahTugas tt = new TambahTugas(nama, npm);
         tt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        TambahTugas tt = new TambahTugas();
+        TambahTugas tt = new TambahTugas(nama, npm);
         tt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
-        TambahTugas tt = new TambahTugas();
+        TambahTugas tt = new TambahTugas(nama, npm);
         tt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-        TambahTugas tt = new TambahTugas();
+        TambahTugas tt = new TambahTugas(nama, npm);
         tt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton19ActionPerformed
@@ -373,15 +380,15 @@ public class LihatJadwal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelJ1;
+    private javax.swing.JLabel jLabelJ2;
+    private javax.swing.JLabel jLabelJ3;
+    private javax.swing.JLabel jLabelJ4;
+    private javax.swing.JLabel jLabelT1;
+    private javax.swing.JLabel jLabelT2;
+    private javax.swing.JLabel jLabelT3;
+    private javax.swing.JLabel jLabelT4;
+    private javax.swing.JLabel jLabelTanggal;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,14 +9,20 @@ package csa_fppbo1;
  * @author ASUS TUF
  */
 public class TambahTugas extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame1
-     */
+    private String npm;
+    private String nama;
+    
     public TambahTugas() {
         initComponents();
     }
-
+    
+    public TambahTugas(String nama, String npm){
+        this.nama = nama;
+        this.npm = npm;
+        initComponents();
+        // Setel teks label dengan nama yang diterima
+        jLabel1.setText("Selamat datang, " + nama);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,12 +34,12 @@ public class TambahTugas extends javax.swing.JFrame {
 
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,15 +65,6 @@ public class TambahTugas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 80, 20));
-
-        jTextField2.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 13, 280, 40));
 
         jTextField3.setBackground(new java.awt.Color(218, 218, 218));
         jTextField3.setBorder(null);
@@ -97,26 +94,28 @@ public class TambahTugas extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 300, 110));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
+        jLabel1.setBackground(new java.awt.Color(218, 218, 218));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 280, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        HalamanUtama hu = new HalamanUtama();
-        hu.setVisible(true);
+        LihatJadwal lj = new LihatJadwal(nama, npm);
+        lj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        MenuLihatJadwal mlj = new MenuLihatJadwal(nama, npm);
+        mlj.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -195,10 +194,10 @@ public class TambahTugas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables

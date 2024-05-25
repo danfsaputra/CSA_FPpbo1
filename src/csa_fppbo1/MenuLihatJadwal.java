@@ -9,14 +9,20 @@ package csa_fppbo1;
  * @author ASUS TUF
  */
 public class MenuLihatJadwal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NewJFrame1
-     */
+    private String npm;
+    private String nama;
+    
     public MenuLihatJadwal() {
         initComponents();
     }
-
+    
+    public MenuLihatJadwal(String nama, String npm){
+        this.nama = nama;
+        this.npm = npm;
+        initComponents();
+        // Setel teks label dengan nama yang diterima
+        jLabel2.setText("Selamat datang, " + nama);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,42 +121,42 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal();
+        LihatJadwal lh = new LihatJadwal(nama, npm);
         lh.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal();
+        LihatJadwal lh = new LihatJadwal(nama, npm);
         lh.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        HalamanUtama hu = new HalamanUtama();
+        HalamanUtama hu = new HalamanUtama(nama, npm);
         hu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal();
+        LihatJadwal lh = new LihatJadwal(nama, npm);
         lh.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal();
+        LihatJadwal lh = new LihatJadwal(nama, npm);
         lh.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal();
+        LihatJadwal lh = new LihatJadwal(nama, npm);
         lh.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed

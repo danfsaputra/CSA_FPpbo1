@@ -22,8 +22,8 @@ public class HalamanUtama extends javax.swing.JFrame {
     }
     
     public HalamanUtama(String nama, String npm) {
-        this.npm = npm;
         this.nama = nama;
+        this.npm = npm;
         initComponents();
         // Setel teks label dengan nama yang diterima
         jLabel2.setText("Selamat datang, " + nama);
@@ -115,14 +115,14 @@ public class HalamanUtama extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        MenuLihatJadwal mlj = new MenuLihatJadwal();
+        MenuLihatJadwal mlj = new MenuLihatJadwal(nama, npm);
         mlj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        LihatKelas lk = new LihatKelas();
+        LihatKelas lk = new LihatKelas(nama, npm);
         lk.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -136,14 +136,14 @@ public class HalamanUtama extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        LihatTugas lt = new LihatTugas();
+        LihatTugas lt = new LihatTugas(nama, npm);
         lt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        TambahJadwal tj = new TambahJadwal(npm, nama);
+        TambahJadwal tj = new TambahJadwal(nama, npm);
         tj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
