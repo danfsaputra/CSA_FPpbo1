@@ -58,7 +58,7 @@ public class LihatJadwal extends javax.swing.JFrame {
     private void setTanggal() {
         tanggalSekarang = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
-        tanggal.setText("Tanggal: " + formatter.format(tanggalSekarang));
+        jLabel2.setText("Tanggal: " + formatter.format(tanggalSekarang));
     }
 
     private void tampilkanJadwalDanTugas(String hari) {
@@ -69,13 +69,13 @@ public class LihatJadwal extends javax.swing.JFrame {
             int counter = 1;
             while (rs.next()) {
                 if (counter == 1) {
-                    setJadwalLabel(jadwal1, jLabelT1, rs);
+                    setJadwalLabel(jLabel3, jLabelT1, rs);
                 } else if (counter == 2) {
-                    setJadwalLabel(jadwal2, jLabelT2, rs);
+                    setJadwalLabel(jLabel4, jLabelT2, rs);
                 } else if (counter == 3) {
-                    setJadwalLabel(jadwal3, jLabelT3, rs);
+                    setJadwalLabel(jLabel5, jLabelT3, rs);
                 } else if (counter == 4) {
-                    setJadwalLabel(jadwal4, jLabelT4, rs);
+                    setJadwalLabel(jLabel6, jLabelT4, rs);
                 }
                 counter++;
             }
@@ -85,10 +85,10 @@ public class LihatJadwal extends javax.swing.JFrame {
     }
 
     private void clearJadwalLabels() {
-        jadwal1.setText("");
-        jadwal2.setText("");
-        jadwal3.setText("");
-        jadwal4.setText("");
+        jLabel3.setText("");
+        jLabel4.setText("");
+        jLabel5.setText("");
+        jLabel6.setText("");
         jLabelT1.setText("");
         jLabelT2.setText("");
         jLabelT3.setText("");
@@ -129,15 +129,15 @@ public class LihatJadwal extends javax.swing.JFrame {
         jButtonRabu = new javax.swing.JButton();
         jButtonKamis = new javax.swing.JButton();
         jButtonJumat = new javax.swing.JButton();
-        jadwal1 = new javax.swing.JLabel();
-        jadwal2 = new javax.swing.JLabel();
-        jadwal3 = new javax.swing.JLabel();
-        jadwal4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabelT1 = new javax.swing.JLabel();
         jLabelT2 = new javax.swing.JLabel();
         jLabelT3 = new javax.swing.JLabel();
         jLabelT4 = new javax.swing.JLabel();
-        tanggal = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jButtonSenin.setText("Senin");
@@ -179,19 +179,19 @@ public class LihatJadwal extends javax.swing.JFrame {
         // Contoh sederhana layout, bisa disesuaikan dengan kebutuhan
         setLayout(new java.awt.GridLayout(6, 2));
         add(jLabel1);
-        add(tanggal);
+        add(jLabel2);
         add(jButtonSenin);
         add(jButtonSelasa);
         add(jButtonRabu);
         add(jButtonKamis);
         add(jButtonJumat);
-        add(jadwal1);
+        add(jLabel3);
         add(jLabelT1);
-        add(jadwal2);
+        add(jLabel4);
         add(jLabelT2);
-        add(jadwal3);
+        add(jLabel5);
         add(jLabelT3);
-        add(jadwal4);
+        add(jLabel6);
         add(jLabelT4);
 
         pack();
@@ -203,15 +203,15 @@ public class LihatJadwal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRabu;
     private javax.swing.JButton jButtonKamis;
     private javax.swing.JButton jButtonJumat;
-    private javax.swing.JLabel jadwal1;
-    private javax.swing.JLabel jadwal2;
-    private javax.swing.JLabel jadwal3;
-    private javax.swing.JLabel jadwal4;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelT1;
     private javax.swing.JLabel jLabelT2;
     private javax.swing.JLabel jLabelT3;
     private javax.swing.JLabel jLabelT4;
-    private javax.swing.JLabel tanggal;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration
 }
@@ -236,11 +236,11 @@ public class LihatJadwal extends javax.swing.JFrame {
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tanggal = new javax.swing.JLabel();
-        jadwal4 = new javax.swing.JLabel();
-        jadwal1 = new javax.swing.JLabel();
-        jadwal2 = new javax.swing.JLabel();
-        jadwal3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabelT4 = new javax.swing.JLabel();
         jLabelT1 = new javax.swing.JLabel();
         jLabelT2 = new javax.swing.JLabel();
@@ -249,7 +249,7 @@ public class LihatJadwal extends javax.swing.JFrame {
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
-        tugas2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -356,20 +356,20 @@ public class LihatJadwal extends javax.swing.JFrame {
         jLabel1.setText("Nama");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
 
-        tanggal.setText("Tanggal");
-        getContentPane().add(tanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 20));
+        jLabel2.setText("Tanggal");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 20));
 
-        jadwal4.setText("Jadwal 1");
-        getContentPane().add(jadwal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 508, 150, -1));
+        jLabel6.setText("Jadwal 1");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 508, 150, -1));
 
-        jadwal1.setText("Jadwal 1");
-        getContentPane().add(jadwal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 178, 150, -1));
+        jLabel3.setText("Jadwal 1");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 178, 150, -1));
 
-        jadwal2.setText("Jadwal 1");
-        getContentPane().add(jadwal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 288, 150, -1));
+        jLabel4.setText("Jadwal 1");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 288, 150, -1));
 
-        jadwal3.setText("Jadwal 1");
-        getContentPane().add(jadwal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 398, 150, -1));
+        jLabel5.setText("Jadwal 1");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 398, 150, -1));
         getContentPane().add(jLabelT4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 550, 280, 40));
         getContentPane().add(jLabelT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 280, 40));
         getContentPane().add(jLabelT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 280, 40));
@@ -419,8 +419,8 @@ public class LihatJadwal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 400, 20, 11));
 
-        tugas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Tugas.png"))); // NOI18N
-        getContentPane().add(tugas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Tugas.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -573,15 +573,15 @@ public class LihatJadwal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelT1;
     private javax.swing.JLabel jLabelT2;
     private javax.swing.JLabel jLabelT3;
     private javax.swing.JLabel jLabelT4;
-    private javax.swing.JLabel jadwal1;
-    private javax.swing.JLabel jadwal2;
-    private javax.swing.JLabel jadwal3;
-    private javax.swing.JLabel jadwal4;
-    private javax.swing.JLabel tanggal;
-    private javax.swing.JLabel tugas2;
     // End of variables declaration//GEN-END:variables
 }
