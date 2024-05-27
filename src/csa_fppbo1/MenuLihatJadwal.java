@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package csa_fppbo1;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,6 +12,7 @@ package csa_fppbo1;
 public class MenuLihatJadwal extends javax.swing.JFrame {
     private String npm;
     private String nama;
+    private String hari;
     
     public MenuLihatJadwal() {
         initComponents();
@@ -19,6 +21,7 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
     public MenuLihatJadwal(String nama, String npm){
         this.nama = nama;
         this.npm = npm;
+        this.hari = hari;
         initComponents();
         // Setel teks label dengan nama yang diterima
         jLabel2.setText("Selamat datang, " + nama);
@@ -32,39 +35,39 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonSenin = new javax.swing.JButton();
+        jButtonKamis = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButtonRabu = new javax.swing.JButton();
+        jButtonSelasa = new javax.swing.JButton();
+        jButtonJumat = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(218, 218, 218));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton2.setText("Senin");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSenin.setBackground(new java.awt.Color(218, 218, 218));
+        jButtonSenin.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jButtonSenin.setText("Senin");
+        jButtonSenin.setBorder(null);
+        jButtonSenin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonSeninActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 200, 80));
+        getContentPane().add(jButtonSenin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 200, 80));
 
-        jButton3.setBackground(new java.awt.Color(218, 218, 218));
-        jButton3.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton3.setText("Kamis");
-        jButton3.setBorder(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonKamis.setBackground(new java.awt.Color(218, 218, 218));
+        jButtonKamis.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jButtonKamis.setText("Kamis");
+        jButtonKamis.setBorder(null);
+        jButtonKamis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonKamisActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 200, 80));
+        getContentPane().add(jButtonKamis, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 200, 80));
 
         jButton4.setBackground(new java.awt.Color(218, 218, 218));
         jButton4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
@@ -77,38 +80,38 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 628, 60, 20));
 
-        jButton6.setBackground(new java.awt.Color(218, 218, 218));
-        jButton6.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton6.setText("Rabu");
-        jButton6.setBorder(null);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRabu.setBackground(new java.awt.Color(218, 218, 218));
+        jButtonRabu.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jButtonRabu.setText("Rabu");
+        jButtonRabu.setBorder(null);
+        jButtonRabu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonRabuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 190, 80));
+        getContentPane().add(jButtonRabu, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 190, 80));
 
-        jButton5.setBackground(new java.awt.Color(218, 218, 218));
-        jButton5.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton5.setText("Selasa");
-        jButton5.setBorder(null);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSelasa.setBackground(new java.awt.Color(218, 218, 218));
+        jButtonSelasa.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jButtonSelasa.setText("Selasa");
+        jButtonSelasa.setBorder(null);
+        jButtonSelasa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonSelasaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 237, 200, 80));
+        getContentPane().add(jButtonSelasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 237, 200, 80));
 
-        jButton7.setBackground(new java.awt.Color(218, 218, 218));
-        jButton7.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton7.setText("Jumat");
-        jButton7.setBorder(null);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonJumat.setBackground(new java.awt.Color(218, 218, 218));
+        jButtonJumat.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        jButtonJumat.setText("Jumat");
+        jButtonJumat.setBorder(null);
+        jButtonJumat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonJumatActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 190, 80));
+        getContentPane().add(jButtonJumat, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 190, 80));
 
         jLabel2.setText("Nama");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
@@ -119,19 +122,20 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonSeninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeninActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal(nama, npm);
-        lh.setVisible(true);
+        LihatJadwal lihatJadwal = new LihatJadwal(nama, npm, "Senin");
+        lihatJadwal.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButtonSeninActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonKamisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKamisActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal(nama, npm);
-        lh.setVisible(true);
+        LihatJadwal lihatJadwal = new LihatJadwal(nama, npm, "Kamis");
+        lihatJadwal.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonKamisActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -140,26 +144,26 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonRabuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRabuActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal(nama, npm);
-        lh.setVisible(true);
+        LihatJadwal lihatJadwal = new LihatJadwal(nama, npm, "Rabu");
+        lihatJadwal.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonRabuActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonSelasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelasaActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal(nama, npm);
-        lh.setVisible(true);
+        LihatJadwal lihatJadwal = new LihatJadwal(nama, npm, "Selasa");
+        lihatJadwal.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonSelasaActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButtonJumatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJumatActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lh = new LihatJadwal(nama, npm);
-        lh.setVisible(true);
+        LihatJadwal lihatJadwal = new LihatJadwal(nama, npm, "Jumat");
+        lihatJadwal.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButtonJumatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +206,22 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -212,12 +232,12 @@ public class MenuLihatJadwal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonJumat;
+    private javax.swing.JButton jButtonKamis;
+    private javax.swing.JButton jButtonRabu;
+    private javax.swing.JButton jButtonSelasa;
+    private javax.swing.JButton jButtonSenin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
