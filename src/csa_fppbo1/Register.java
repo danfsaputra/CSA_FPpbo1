@@ -76,6 +76,30 @@ public class Register extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nama = jTextFieldNama.getText();
         String npm = jTextFieldNpm.getText();
+        
+        if (nama.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nama tidak boleh kosong.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (npm.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NPM tidak boleh kosong.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Validasi panjang input NPM
+        if (npm.length() > 11) { // Misalnya, maksimal 10 digit
+            JOptionPane.showMessageDialog(this, "NPM tidak boleh lebih dari 11 digit.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            // Pastikan NPM adalah angka
+            long parsedNpm = Long.parseLong(npm);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "NPM harus berupa angka.", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         try {
             // Cek apakah nama dan npm sudah ada di database
