@@ -249,7 +249,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelTanggal">
+    <Component class="javax.swing.JLabel" name="tanggal">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tanggal"/>
       </Properties>
@@ -259,7 +259,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelJ4">
+    <Component class="javax.swing.JLabel" name="jadwal4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jadwal 1"/>
       </Properties>
@@ -269,7 +269,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelJ1">
+    <Component class="javax.swing.JLabel" name="jadwal1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jadwal 1"/>
       </Properties>
@@ -279,7 +279,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelJ2">
+    <Component class="javax.swing.JLabel" name="jadwal2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jadwal 1"/>
       </Properties>
@@ -289,7 +289,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelJ3">
+    <Component class="javax.swing.JLabel" name="jadwal3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jadwal 1"/>
       </Properties>
@@ -423,7 +423,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="tugas2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/gambar/Tambah Tugas.png"/>
