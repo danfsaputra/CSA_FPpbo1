@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Bulan Mei 2024 pada 16.51
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.0.30
+-- Generation Time: May 27, 2024 at 01:41 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `register`
+-- Table structure for table `register`
 --
 
 CREATE TABLE `register` (
@@ -34,7 +34,7 @@ CREATE TABLE `register` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `register`
+-- Dumping data for table `register`
 --
 
 INSERT INTO `register` (`id`, `nama`, `npm`) VALUES
@@ -43,33 +43,36 @@ INSERT INTO `register` (`id`, `nama`, `npm`) VALUES
 (9, 'Bara', '22081010001'),
 (12, 'septi', '22081010150'),
 (13, 'raja', '22081010138'),
-(14, 'dhani', '2208101089');
+(16, 'Moch Dani Ferdian Saputra', '22081010147');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `schedule`
+-- Table structure for table `schedule`
 --
 
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
-  `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu') NOT NULL,
+  `hari` enum('Senin','Selasa','Rabu','Kamis','Jumat') NOT NULL,
   `mata_kuliah` varchar(100) NOT NULL,
   `jam` time NOT NULL,
   `npm` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `schedule`
+-- Dumping data for table `schedule`
 --
 
 INSERT INTO `schedule` (`id`, `hari`, `mata_kuliah`, `jam`, `npm`) VALUES
-(7, 'Senin', 'ADS', '13:00:00', '22081010089');
+(7, 'Senin', 'ADS', '13:00:00', '22081010089'),
+(8, 'Selasa', 'JARKOM', '09:30:00', '22081010089'),
+(10, 'Kamis', 'RPL', '13:00:00', '22081010089'),
+(13, 'Senin', 'JARKOM', '09:30:00', '22081010147');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tugas`
+-- Table structure for table `tugas`
 --
 
 CREATE TABLE `tugas` (
@@ -80,64 +83,72 @@ CREATE TABLE `tugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `tugas`
+--
+
+INSERT INTO `tugas` (`id`, `schedule_id`, `deskripsi_tugas`, `tanggal_deadline`) VALUES
+(1, 7, 'FP', '2024-05-30'),
+(2, 13, 'Hospot', '2024-05-27');
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `register`
+-- Indexes for table `register`
 --
 ALTER TABLE `register`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `npm` (`npm`);
 
 --
--- Indeks untuk tabel `schedule`
+-- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
   ADD PRIMARY KEY (`id`),
   ADD KEY `mahasiswa_id` (`npm`);
 
 --
--- Indeks untuk tabel `tugas`
+-- Indexes for table `tugas`
 --
 ALTER TABLE `tugas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `schedule_id` (`schedule_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `register`
+-- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `schedule`
+-- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `tugas`
+-- AUTO_INCREMENT for table `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `schedule`
+-- Constraints for table `schedule`
 --
 ALTER TABLE `schedule`
   ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`npm`) REFERENCES `register` (`npm`);
 
 --
--- Ketidakleluasaan untuk tabel `tugas`
+-- Constraints for table `tugas`
 --
 ALTER TABLE `tugas`
   ADD CONSTRAINT `tugas_ibfk_1` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`);

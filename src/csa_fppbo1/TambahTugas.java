@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package csa_fppbo1;
-
+import java.sql.*;
+import javax.swing.JOptionPane;
+import database.dbconnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author ASUS TUF
@@ -11,17 +15,44 @@ package csa_fppbo1;
 public class TambahTugas extends javax.swing.JFrame {
     private String npm;
     private String nama;
+    private String hari;
+    private int scheduleId;
     
     public TambahTugas() {
         initComponents();
     }
     
-    public TambahTugas(String nama, String npm){
+    public TambahTugas(String nama, String npm, String namaMatkul, String jam){
         this.nama = nama;
         this.npm = npm;
+        this.hari = hari;
+        this.scheduleId = getScheduleId(npm, namaMatkul, jam);
         initComponents();
         // Setel teks label dengan nama yang diterima
         jLabel1.setText("Selamat datang, " + nama);
+    }
+    
+    private int getScheduleId(String npm, String namaMatkul, String jam) {
+        int id = -1;
+        try {
+            dbconnection koneksi = new dbconnection();
+            Connection conn = koneksi.getConnection();
+            String query = "SELECT id FROM schedule WHERE npm = ? AND mata_kuliah = ? AND jam = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, npm);
+            ps.setString(2, namaMatkul);
+            ps.setString(3, jam);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt("id");
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+        return id;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,11 +65,10 @@ public class TambahTugas extends javax.swing.JFrame {
 
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaTugas = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,38 +94,23 @@ public class TambahTugas extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, 80, 20));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 487, 80, 20));
 
-        jTextField3.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 265, 300, 20));
+        jTextAreaTugas.setBackground(new java.awt.Color(218, 218, 218));
+        jTextAreaTugas.setColumns(20);
+        jTextAreaTugas.setLineWrap(true);
+        jTextAreaTugas.setRows(5);
+        jTextAreaTugas.setToolTipText("");
+        jTextAreaTugas.setBorder(null);
+        jScrollPane1.setViewportView(jTextAreaTugas);
 
-        jTextField4.setBackground(new java.awt.Color(218, 218, 218));
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 300, 20));
-
-        jTextArea1.setBackground(new java.awt.Color(218, 218, 218));
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setToolTipText("");
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 300, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 300, 110));
 
         jLabel1.setBackground(new java.awt.Color(218, 218, 218));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 280, 40));
+
+        jDateChooser.setBackground(new java.awt.Color(218, 218, 218));
+        getContentPane().add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 190, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
@@ -105,25 +120,57 @@ public class TambahTugas extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lj = new LihatJadwal(nama, npm);
+        LihatJadwal lj = new LihatJadwal(nama, npm, hari);
         lj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        String tugas = jTextAreaTugas.getText();
+        String deadline = "";
+        Date date = jDateChooser.getDate();
+        
+        if (date != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            deadline = sdf.format(date);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a date.");
+            return;
+        }
+
+        if (tugas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill the task field.");
+            return;
+        }
+
+        if (tugas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all fields.");
+            return;
+        }
+
+        try {
+            dbconnection koneksi = new dbconnection();
+            Connection conn = koneksi.getConnection();
+            String query = "INSERT INTO tugas (schedule_id, deskripsi_tugas, tanggal_deadline) VALUES (?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, scheduleId);
+            ps.setString(2, tugas);
+            ps.setString(3, deadline);
+            ps.executeUpdate();
+
+            ps.close();
+            conn.close();
+
+            JOptionPane.showMessageDialog(this, "Tugas Berhasil Disimpan.");
+            this.dispose(); // Close the form after saving
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
         MenuLihatJadwal mlj = new MenuLihatJadwal(nama, npm);
         mlj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +229,38 @@ public class TambahTugas extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -194,11 +273,10 @@ public class TambahTugas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextArea jTextAreaTugas;
     // End of variables declaration//GEN-END:variables
 }
