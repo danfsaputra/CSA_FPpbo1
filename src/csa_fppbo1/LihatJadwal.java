@@ -107,7 +107,7 @@ public class LihatJadwal extends javax.swing.JFrame {
                 return;
             }
 
-            String query = "DELETE FROM schedule WHERE hari = ? AND npm = ? AND mata_kuliah = ?";
+            String query = "DELETE FROM schedule WHERE id = ? AND npm = ? AND mata_kuliah = ?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, this.hari);
             ps.setString(2, this.npm);
