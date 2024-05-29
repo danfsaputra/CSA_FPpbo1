@@ -249,11 +249,7 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel2">
-=======
     <Component class="javax.swing.JLabel" name="jLabelTanggal">
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
       <Properties>
         <Property name="text" type="java.lang.String" value="Tanggal"/>
       </Properties>
@@ -263,11 +259,7 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel6">
-=======
     <Component class="javax.swing.JLabel" name="jLabelJam4">
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
       <Properties>
         <Property name="text" type="java.lang.String" value="Jam"/>
       </Properties>
@@ -277,11 +269,7 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel3">
-=======
     <Component class="javax.swing.JLabel" name="jLabelJam1">
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
       <Properties>
         <Property name="text" type="java.lang.String" value="Jam"/>
       </Properties>
@@ -291,11 +279,7 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel4">
-=======
     <Component class="javax.swing.JLabel" name="jLabelJam2">
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
       <Properties>
         <Property name="text" type="java.lang.String" value="Jam"/>
       </Properties>
@@ -305,11 +289,7 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel5">
-=======
     <Component class="javax.swing.JLabel" name="jLabelJam3">
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
       <Properties>
         <Property name="text" type="java.lang.String" value="Jam"/>
       </Properties>
@@ -443,9 +423,6 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-    <Component class="javax.swing.JLabel" name="jLabel7">
-=======
     <Component class="javax.swing.JLabel" name="jLabelJ1">
       <Properties>
         <Property name="text" type="java.lang.String" value="J1"/>
@@ -487,7 +464,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/gambar/Tambah Tugas.png"/>

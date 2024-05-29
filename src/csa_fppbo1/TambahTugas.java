@@ -67,9 +67,9 @@ public class TambahTugas extends javax.swing.JFrame {
         jTextAreaTugas = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jDateChooser = new com.toedter.calendar.JDateChooser();
-        BACKGROUND = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,9 +90,6 @@ public class TambahTugas extends javax.swing.JFrame {
         jDateChooser.setBackground(new java.awt.Color(218, 218, 218));
         getContentPane().add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 170, -1));
 
-        BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
-        getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
-
         jButton4.setBackground(new java.awt.Color(218, 218, 218));
         jButton4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jButton4.setText("Kembali");
@@ -102,7 +99,7 @@ public class TambahTugas extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 620, 100, 40));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 630, 80, 20));
 
         jButton6.setBackground(new java.awt.Color(218, 218, 218));
         jButton6.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
@@ -113,7 +110,10 @@ public class TambahTugas extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 477, 100, 40));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 490, 80, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -261,6 +261,70 @@ public class TambahTugas extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -271,11 +335,11 @@ public class TambahTugas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BACKGROUND;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaTugas;
     // End of variables declaration//GEN-END:variables

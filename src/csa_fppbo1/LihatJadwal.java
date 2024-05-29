@@ -32,183 +32,6 @@ public class LihatJadwal extends javax.swing.JFrame {
         loadJadwal(hari);
     }
 
-<<<<<<< HEAD
-    private void connectToDatabase() {
-        try {
-            String url = "jdbc:mysql://localhost:3306/csa_fppbo"; // Ganti dengan URL database Anda
-            String user = "root"; // Ganti dengan username database Anda
-            String password = ""; // Ganti dengan password database Anda
-            con = DriverManager.getConnection(url, user, password);
-            st = con.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setTanggal() {
-        tanggalSekarang = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM yyyy");
-        jLabel2.setText("Tanggal: " + formatter.format(tanggalSekarang));
-    }
-
-    private void tampilkanJadwalDanTugas(String hari) {
-        clearJadwalLabels();
-        try {
-            String query = "SELECT mata_kuliah, jam, tugas FROM jadwal_dan_tugas WHERE hari = '" + hari + "'";
-            rs = st.executeQuery(query);
-            int counter = 1;
-            while (rs.next()) {
-                if (counter == 1) {
-                    setJadwalLabel(jLabel3, jLabelT1, rs);
-                } else if (counter == 2) {
-                    setJadwalLabel(jLabel4, jLabelT2, rs);
-                } else if (counter == 3) {
-                    setJadwalLabel(jLabel5, jLabelT3, rs);
-                } else if (counter == 4) {
-                    setJadwalLabel(jLabel6, jLabelT4, rs);
-                }
-                counter++;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void clearJadwalLabels() {
-        jLabel3.setText("");
-        jLabel4.setText("");
-        jLabel5.setText("");
-        jLabel6.setText("");
-        jLabelT1.setText("");
-        jLabelT2.setText("");
-        jLabelT3.setText("");
-        jLabelT4.setText("");
-    }
-
-    private void setJadwalLabel(JLabel jadwalLabel, JLabel tugasLabel, ResultSet rs) throws SQLException {
-        String mataKuliah = rs.getString("mata_kuliah");
-        String jam = rs.getString("jam");
-        String tugas = rs.getString("tugas");
-        jadwalLabel.setText(mataKuliah + " - " + jam);
-        tugasLabel.setText(tugas);
-    }
-
-    private void jButtonSeninActionPerformed(java.awt.event.ActionEvent evt) {
-        tampilkanJadwalDanTugas("Senin");
-    }
-
-    private void jButtonSelasaActionPerformed(java.awt.event.ActionEvent evt) {
-        tampilkanJadwalDanTugas("Selasa");
-    }
-
-    private void jButtonRabuActionPerformed(java.awt.event.ActionEvent evt) {
-        tampilkanJadwalDanTugas("Rabu");
-    }
-
-    private void jButtonKamisActionPerformed(java.awt.event.ActionEvent evt) {
-        tampilkanJadwalDanTugas("Kamis");
-    }
-
-    private void jButtonJumatActionPerformed(java.awt.event.ActionEvent evt) {
-        tampilkanJadwalDanTugas("Jumat");
-    }
-
-    private void initComponents() {
-        jButtonSenin = new javax.swing.JButton();
-        jButtonSelasa = new javax.swing.JButton();
-        jButtonRabu = new javax.swing.JButton();
-        jButtonKamis = new javax.swing.JButton();
-        jButtonJumat = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabelT1 = new javax.swing.JLabel();
-        jLabelT2 = new javax.swing.JLabel();
-        jLabelT3 = new javax.swing.JLabel();
-        jLabelT4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-
-        jButtonSenin.setText("Senin");
-        jButtonSelasa.setText("Selasa");
-        jButtonRabu.setText("Rabu");
-        jButtonKamis.setText("Kamis");
-        jButtonJumat.setText("Jumat");
-
-        jButtonSenin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSeninActionPerformed(evt);
-            }
-        });
-
-        jButtonSelasa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSelasaActionPerformed(evt);
-            }
-        });
-
-        jButtonRabu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRabuActionPerformed(evt);
-            }
-        });
-
-        jButtonKamis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonKamisActionPerformed(evt);
-            }
-        });
-
-        jButtonJumat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonJumatActionPerformed(evt);
-            }
-        });
-
-        // Contoh sederhana layout, bisa disesuaikan dengan kebutuhan
-        setLayout(new java.awt.GridLayout(6, 2));
-        add(jLabel1);
-        add(jLabel2);
-        add(jButtonSenin);
-        add(jButtonSelasa);
-        add(jButtonRabu);
-        add(jButtonKamis);
-        add(jButtonJumat);
-        add(jLabel3);
-        add(jLabelT1);
-        add(jLabel4);
-        add(jLabelT2);
-        add(jLabel5);
-        add(jLabelT3);
-        add(jLabel6);
-        add(jLabelT4);
-
-        pack();
-    }
-
-    // Variables declaration - do not modify
-    private javax.swing.JButton jButtonSenin;
-    private javax.swing.JButton jButtonSelasa;
-    private javax.swing.JButton jButtonRabu;
-    private javax.swing.JButton jButtonKamis;
-    private javax.swing.JButton jButtonJumat;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabelT1;
-    private javax.swing.JLabel jLabelT2;
-    private javax.swing.JLabel jLabelT3;
-    private javax.swing.JLabel jLabelT4;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration
-}
-
-
-=======
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -347,34 +170,16 @@ public class LihatJadwal extends javax.swing.JFrame {
         jButtonTtugas4 = new javax.swing.JButton();
         jButtonHapusJ4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-=======
         jLabelTanggal = new javax.swing.JLabel();
         jLabelJam4 = new javax.swing.JLabel();
         jLabelJam1 = new javax.swing.JLabel();
         jLabelJam2 = new javax.swing.JLabel();
         jLabelJam3 = new javax.swing.JLabel();
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
         jLabelT4 = new javax.swing.JLabel();
         jLabelT1 = new javax.swing.JLabel();
         jLabelT2 = new javax.swing.JLabel();
         jLabelT3 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jButton21 = new javax.swing.JButton();
-<<<<<<< HEAD
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-=======
-=======
         jhapustugas1 = new javax.swing.JButton();
->>>>>>> 153c4bb81a5af810e76e40201305d19467e40c78
         jButtonHapusJ1 = new javax.swing.JButton();
         jButtonHapusJ2 = new javax.swing.JButton();
         jButtonHapusJ3 = new javax.swing.JButton();
@@ -383,7 +188,6 @@ public class LihatJadwal extends javax.swing.JFrame {
         jLabelJ3 = new javax.swing.JLabel();
         jLabelJ4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -490,22 +294,6 @@ public class LihatJadwal extends javax.swing.JFrame {
         jLabel1.setText("Nama");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
 
-<<<<<<< HEAD
-        jLabel2.setText("Tanggal");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 20));
-
-        jLabel6.setText("Jadwal 1");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 508, 150, -1));
-
-        jLabel3.setText("Jadwal 1");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 178, 150, -1));
-
-        jLabel4.setText("Jadwal 1");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 288, 150, -1));
-
-        jLabel5.setText("Jadwal 1");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 398, 150, -1));
-=======
         jLabelTanggal.setText("Tanggal");
         getContentPane().add(jLabelTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 20));
 
@@ -520,7 +308,6 @@ public class LihatJadwal extends javax.swing.JFrame {
 
         jLabelJam3.setText("Jam");
         getContentPane().add(jLabelJam3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 397, 100, -1));
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
         getContentPane().add(jLabelT4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 550, 280, 40));
         getContentPane().add(jLabelT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 280, 40));
         getContentPane().add(jLabelT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 280, 40));
@@ -570,10 +357,6 @@ public class LihatJadwal extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonHapusJ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 400, 20, 11));
 
-<<<<<<< HEAD
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Tugas.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
-=======
         jLabelJ1.setText("J1");
         getContentPane().add(jLabelJ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 178, 100, -1));
 
@@ -588,7 +371,6 @@ public class LihatJadwal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Tugas.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -789,6 +571,70 @@ public class LihatJadwal extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -810,13 +656,6 @@ public class LihatJadwal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTtugas4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-<<<<<<< HEAD
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-=======
     private javax.swing.JLabel jLabelJ1;
     private javax.swing.JLabel jLabelJ2;
     private javax.swing.JLabel jLabelJ3;
@@ -825,21 +664,14 @@ public class LihatJadwal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelJam2;
     private javax.swing.JLabel jLabelJam3;
     private javax.swing.JLabel jLabelJam4;
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
     private javax.swing.JLabel jLabelT1;
     private javax.swing.JLabel jLabelT2;
     private javax.swing.JLabel jLabelT3;
     private javax.swing.JLabel jLabelT4;
-<<<<<<< HEAD
-=======
     private javax.swing.JLabel jLabelTanggal;
-<<<<<<< HEAD
->>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
-=======
     private javax.swing.JButton jhapustugas1;
     private javax.swing.JButton jhapustugas2;
     private javax.swing.JButton jhapustugas3;
     private javax.swing.JButton jhapustugas4;
->>>>>>> 153c4bb81a5af810e76e40201305d19467e40c78
     // End of variables declaration//GEN-END:variables
 }
