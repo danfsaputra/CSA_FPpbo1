@@ -63,38 +63,16 @@ public class TambahTugas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaTugas = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jDateChooser = new com.toedter.calendar.JDateChooser();
-        jLabel3 = new javax.swing.JLabel();
+        BACKGROUND = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton4.setBackground(new java.awt.Color(218, 218, 218));
-        jButton4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButton4.setText("Kembali");
-        jButton4.setBorder(null);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 632, 60, 20));
-
-        jButton6.setBackground(new java.awt.Color(218, 218, 218));
-        jButton6.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
-        jButton6.setText("Simpan");
-        jButton6.setBorder(null);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 487, 80, 20));
 
         jTextAreaTugas.setBackground(new java.awt.Color(218, 218, 218));
         jTextAreaTugas.setColumns(20);
@@ -107,13 +85,35 @@ public class TambahTugas extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 300, 110));
 
         jLabel1.setBackground(new java.awt.Color(218, 218, 218));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 280, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 40));
 
         jDateChooser.setBackground(new java.awt.Color(218, 218, 218));
-        getContentPane().add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 190, -1));
+        getContentPane().add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 170, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
+        BACKGROUND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/TambahTugas2.png"))); // NOI18N
+        getContentPane().add(BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
+
+        jButton4.setBackground(new java.awt.Color(218, 218, 218));
+        jButton4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButton4.setText("Kembali");
+        jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 620, 100, 40));
+
+        jButton6.setBackground(new java.awt.Color(218, 218, 218));
+        jButton6.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jButton6.setText("Simpan");
+        jButton6.setBorder(null);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 477, 100, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,11 +271,11 @@ public class TambahTugas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BACKGROUND;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaTugas;
     // End of variables declaration//GEN-END:variables

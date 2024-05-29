@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package csa_fppbo1;
+
 import database.dbconnection;
 import java.sql.*;
 import javax.swing.*;
@@ -14,12 +15,11 @@ public class LihatJadwal extends javax.swing.JFrame {
      private String npm;
      private String nama;
      private String hari;
-     private String namaMatkul;
-     
-     
-    public LihatJadwal() {
+
+     public LihatJadwal() {
         initComponents();
     }
+     
     
     public LihatJadwal(String nama, String npm, String hari){
         this.nama = nama;
@@ -227,11 +227,14 @@ public class LihatJadwal extends javax.swing.JFrame {
 
             JLabel[] jLabelsJ = {jLabelJ1, jLabelJ2, jLabelJ3, jLabelJ4};
             JLabel[] jLabelsT = {jLabelJam1, jLabelJam2, jLabelJam3, jLabelJam4};
+            JLabel[] jLabelsTask = {jLabelT1, jLabelT2, jLabelT3, jLabelT4};
 
             int index = 0;
             while (rs.next() && index < 4) {
                 jLabelsJ[index].setText(rs.getString("mata_kuliah"));
                 jLabelsT[index].setText(rs.getString("jam"));
+                int scheduleId = rs.getInt("id");
+                loadTugas(scheduleId, jLabelsTask[index]);
                 index++;
             }
 
@@ -242,7 +245,31 @@ public class LihatJadwal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }
+    
+    private void loadTugas(int scheduleId, JLabel label) {
+        try {
+            dbconnection koneksi = new dbconnection();
+            Connection conn = koneksi.getConnection();
+            String query = "SELECT deskripsi_tugas FROM tugas WHERE schedule_id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, scheduleId);
+            ResultSet rs = ps.executeQuery();
 
+            if (rs.next()) {
+                label.setText(rs.getString("deskripsi_tugas"));
+            } else {
+                label.setText("Tidak ada tugas.");
+            }
+
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }
+    
+    
     private void deleteJadwal(int index) {
         try {
             dbconnection koneksi = new dbconnection();
@@ -252,7 +279,7 @@ public class LihatJadwal extends javax.swing.JFrame {
             JLabel[] jLabelsT = {jLabelJam1, jLabelJam2, jLabelJam3, jLabelJam4};
 
             String mataKuliah = jLabelsJ[index].getText();
-            if (mataKuliah.equals("J1") || mataKuliah.equals("J2") || mataKuliah.equals("J3") || mataKuliah.equals("4")) {
+            if (mataKuliah.equals("J1") || mataKuliah.equals("J2") || mataKuliah.equals("J3") || mataKuliah.equals("j4")) {
                 JOptionPane.showMessageDialog(this, "Tidak ada jadwal yang dipilih untuk dihapus.");
                 return;
             }
@@ -275,14 +302,45 @@ public class LihatJadwal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }
+    
+    private void deleteTugas(int index) {
+        try {
+            dbconnection koneksi = new dbconnection();
+            Connection conn = koneksi.getConnection();
+            JLabel[] jLabelsTask = {jLabelT1, jLabelT2, jLabelT3, jLabelT4};
+            JLabel[] jLabelsJ = {jLabelJ1, jLabelJ2, jLabelJ3, jLabelJ4};
+
+            String mataKuliah = jLabelsJ[index].getText();
+            if (mataKuliah.equals("J1") || mataKuliah.equals("J2") || mataKuliah.equals("J3") || mataKuliah.equals("J4")) {
+                JOptionPane.showMessageDialog(this, "Tidak ada tugas yang dipilih untuk dihapus.");
+                return;
+            }
+
+            String query = "DELETE FROM tugas WHERE schedule_id = (SELECT id FROM schedule WHERE hari = ? AND npm = ? AND mata_kuliah = ?)";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, this.hari);
+            ps.setString(2, this.npm);
+            ps.setString(3, mataKuliah);
+            ps.executeUpdate();
+
+            jLabelsTask[index].setText("Tidak ada tugas.");
+
+            ps.close();
+            conn.close();
+
+            JOptionPane.showMessageDialog(this, "Tugas berhasil dihapus.");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton4 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jhapustugas3 = new javax.swing.JButton();
+        jhapustugas4 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        jhapustugas2 = new javax.swing.JButton();
         jButtonTtugas1 = new javax.swing.JButton();
         jButtonTtugas3 = new javax.swing.JButton();
         jButtonTtugas2 = new javax.swing.JButton();
@@ -306,6 +364,7 @@ public class LihatJadwal extends javax.swing.JFrame {
         jLabelT1 = new javax.swing.JLabel();
         jLabelT2 = new javax.swing.JLabel();
         jLabelT3 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jButton21 = new javax.swing.JButton();
 <<<<<<< HEAD
         jButton22 = new javax.swing.JButton();
@@ -313,6 +372,9 @@ public class LihatJadwal extends javax.swing.JFrame {
         jButton24 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 =======
+=======
+        jhapustugas1 = new javax.swing.JButton();
+>>>>>>> 153c4bb81a5af810e76e40201305d19467e40c78
         jButtonHapusJ1 = new javax.swing.JButton();
         jButtonHapusJ2 = new javax.swing.JButton();
         jButtonHapusJ3 = new javax.swing.JButton();
@@ -326,27 +388,27 @@ public class LihatJadwal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setBackground(new java.awt.Color(218, 218, 218));
-        jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton4.setText("-");
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jhapustugas3.setBackground(new java.awt.Color(218, 218, 218));
+        jhapustugas3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jhapustugas3.setText("-");
+        jhapustugas3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jhapustugas3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jhapustugas3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 473, 20, 11));
+        getContentPane().add(jhapustugas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 473, 20, 11));
 
-        jButton9.setBackground(new java.awt.Color(218, 218, 218));
-        jButton9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton9.setText("-");
-        jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jhapustugas4.setBackground(new java.awt.Color(218, 218, 218));
+        jhapustugas4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jhapustugas4.setText("-");
+        jhapustugas4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jhapustugas4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jhapustugas4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 583, 20, 11));
+        getContentPane().add(jhapustugas4, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 583, 20, 11));
 
         jButton10.setBackground(new java.awt.Color(218, 218, 218));
         jButton10.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
@@ -359,16 +421,16 @@ public class LihatJadwal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(903, 630, 60, 20));
 
-        jButton11.setBackground(new java.awt.Color(218, 218, 218));
-        jButton11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton11.setText("-");
-        jButton11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jhapustugas2.setBackground(new java.awt.Color(218, 218, 218));
+        jhapustugas2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jhapustugas2.setText("-");
+        jhapustugas2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jhapustugas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jhapustugas2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 362, 20, 11));
+        getContentPane().add(jhapustugas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 362, 20, 11));
 
         jButtonTtugas1.setBackground(new java.awt.Color(218, 218, 218));
         jButtonTtugas1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
@@ -464,16 +526,16 @@ public class LihatJadwal extends javax.swing.JFrame {
         getContentPane().add(jLabelT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 280, 40));
         getContentPane().add(jLabelT3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 280, 40));
 
-        jButton21.setBackground(new java.awt.Color(218, 218, 218));
-        jButton21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton21.setText("-");
-        jButton21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        jhapustugas1.setBackground(new java.awt.Color(218, 218, 218));
+        jhapustugas1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jhapustugas1.setText("-");
+        jhapustugas1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jhapustugas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                jhapustugas1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 250, 20, 11));
+        getContentPane().add(jhapustugas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 250, 20, 11));
 
         jButtonHapusJ1.setBackground(new java.awt.Color(218, 218, 218));
         jButtonHapusJ1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -531,13 +593,15 @@ public class LihatJadwal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jhapustugas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jhapustugas3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        deleteTugas(2);
+    }//GEN-LAST:event_jhapustugas3ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jhapustugas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jhapustugas4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+        deleteTugas(3);
+    }//GEN-LAST:event_jhapustugas4ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
@@ -546,9 +610,10 @@ public class LihatJadwal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void jhapustugas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jhapustugas2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+        deleteTugas(1);
+    }//GEN-LAST:event_jhapustugas2ActionPerformed
 
     private void jButtonTtugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTtugas1ActionPerformed
         // TODO add your handling code here:
@@ -615,9 +680,10 @@ public class LihatJadwal extends javax.swing.JFrame {
         deleteJadwal(3);
     }//GEN-LAST:event_jButtonHapusJ4ActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    private void jhapustugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jhapustugas1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+         deleteTugas(0);
+    }//GEN-LAST:event_jhapustugas1ActionPerformed
 
     private void jButtonHapusJ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHapusJ1ActionPerformed
         // TODO add your handling code here:
@@ -734,10 +800,6 @@ public class LihatJadwal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonHapusJ1;
     private javax.swing.JButton jButtonHapusJ2;
     private javax.swing.JButton jButtonHapusJ3;
@@ -771,6 +833,13 @@ public class LihatJadwal extends javax.swing.JFrame {
 <<<<<<< HEAD
 =======
     private javax.swing.JLabel jLabelTanggal;
+<<<<<<< HEAD
 >>>>>>> cfd59d478c6b85b3af7120f985651c4b1693e963
+=======
+    private javax.swing.JButton jhapustugas1;
+    private javax.swing.JButton jhapustugas2;
+    private javax.swing.JButton jhapustugas3;
+    private javax.swing.JButton jhapustugas4;
+>>>>>>> 153c4bb81a5af810e76e40201305d19467e40c78
     // End of variables declaration//GEN-END:variables
 }
