@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package csa_fppbo1;;
-
+import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import database.dbconnection;
+import java.time.LocalDate;
 /**
  *
  * @author ASUS TUF
@@ -11,6 +16,7 @@ package csa_fppbo1;;
 public class LihatKelas extends javax.swing.JFrame {
     private String nama;
     private String npm;
+    private ArrayList<JLabel> jadwalLabels;
     
     public LihatKelas() {
         initComponents();
@@ -22,6 +28,13 @@ public class LihatKelas extends javax.swing.JFrame {
         initComponents();
         // Setel teks label dengan nama yang diterima
         jLabel3.setText("Selamat datang, " + nama);
+        jadwalLabels = new ArrayList<>();
+        jadwalLabels.add(jLabel7);
+        jadwalLabels.add(jLabel4);
+        jadwalLabels.add(jLabel5);
+        jadwalLabels.add(jLabel2);
+        fetchAndDisplaySchedule();
+        displayCurrentDate();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,12 +46,12 @@ public class LihatKelas extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton10 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,17 +68,8 @@ public class LihatKelas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(903, 633, 60, 20));
 
-        jLabel2.setText("JADWAL 1");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 280, 30));
-
         jLabel3.setText("Nama");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 40));
-
-        jLabel4.setText("JADWAL 1");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 280, 30));
-
-        jLabel5.setText("JADWAL 1");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 280, 30));
 
         jLabel6.setText("Tanggal");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 330, 30));
@@ -73,12 +77,62 @@ public class LihatKelas extends javax.swing.JFrame {
         jLabel7.setText("JADWAL 1");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 223, 280, 30));
 
+        jLabel4.setText("JADWAL 1");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 280, 30));
+
+        jLabel5.setText("JADWAL 1");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 280, 30));
+
+        jLabel2.setText("JADWAL 1");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 280, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Kelas Yang Akan Datang.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void displayCurrentDate(){
+        LocalDate currentDate = LocalDate.now();
+        jLabel6.setText("Tanggal: "+ currentDate.toString());
+    }
+    
+    private void fetchAndDisplaySchedule(){
+        try{
+            dbconnection koneksi = new dbconnection();
+            Connection conn = koneksi.getConnection();
+            String query;
+            query = "SELECT s.mata_kuliah, s.hari, s.jam " +
+                       "FROM schedule s " +
+                       "WHERE s.npm = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            LocalDate currentDate = LocalDate.now();
+            ps.setDate(1, java.sql.Date.valueOf(currentDate));
+            ps.setString(1, this.npm);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            int index = 0;
+            while (rs.next()&& index < jadwalLabels.size()){
+                String matakuliah = rs.getString("mata_kuliah");
+                String hari = rs.getString("hari");
+                String jam = rs.getString("jam");
+                jadwalLabels.get(index).setText(hari + ": " + matakuliah + "( " + jam + ")");
+                index++;
+            }
+            
+            rs.close();
+            ps.close();
+            conn.close();
+            
+            for (int i = index; i < jadwalLabels.size(); i++){
+                jadwalLabels.get(i).setVisible(false);
+            }
+            
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         HalamanUtama hu = new HalamanUtama(nama, npm);
@@ -90,6 +144,11 @@ public class LihatKelas extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run(){
+                new LihatKelas().setVisible(true);
+            }
+        });
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -18,7 +18,7 @@ import database.dbconnection;
     public TambahJadwal() {
         initComponents();
     }
-
+    
     public TambahJadwal(String nama,String npm) {
         this.nama = nama;
         this.npm = npm;
@@ -94,6 +94,7 @@ import database.dbconnection;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         HalamanUtama hu = new HalamanUtama(nama, npm);

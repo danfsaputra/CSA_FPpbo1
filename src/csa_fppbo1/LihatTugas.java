@@ -70,7 +70,7 @@ public class LihatTugas extends javax.swing.JFrame {
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(903, 633, 60, 20));
 
         jLabelT4.setText("Tugas");
-        getContentPane().add(jLabelT4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, 320, 40));
+        getContentPane().add(jLabelT4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 320, 40));
 
         jLabel3.setText("Nama");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 280, 30));
