@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import database.dbconnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /**
  *
  * @author ASUS TUF
@@ -120,8 +121,8 @@ public class TambahTugas extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        LihatJadwal lj = new LihatJadwal(nama, npm, hari);
-        lj.setVisible(true);
+        MenuLihatJadwal mlj = new MenuLihatJadwal(nama, npm);
+        mlj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 

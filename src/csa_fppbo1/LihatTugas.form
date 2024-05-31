@@ -47,7 +47,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabelT4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tugas"/>
       </Properties>
@@ -77,7 +77,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jLabelT1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tugas"/>
       </Properties>
@@ -87,7 +87,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="jLabelJ2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tugas"/>
       </Properties>
@@ -97,7 +97,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="jLabelT3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tugas"/>
       </Properties>
