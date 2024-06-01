@@ -18,7 +18,7 @@ import database.dbconnection;
     public TambahJadwal() {
         initComponents();
     }
-    
+
     public TambahJadwal(String nama,String npm) {
         this.nama = nama;
         this.npm = npm;
@@ -39,9 +39,9 @@ import database.dbconnection;
         jButtonSimpanMatkul = new javax.swing.JButton();
         jTextFieldJam = new javax.swing.JTextField();
         jTextFieldMataKuliah = new javax.swing.JTextField();
-        jTextFieldHari = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jComboBoxHari = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,20 +81,25 @@ import database.dbconnection;
         });
         getContentPane().add(jTextFieldMataKuliah, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 300, 20));
 
-        jTextFieldHari.setBackground(new java.awt.Color(218, 218, 218));
-        jTextFieldHari.setBorder(null);
-        getContentPane().add(jTextFieldHari, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 277, 300, 20));
-
         jLabel1.setBackground(new java.awt.Color(218, 218, 218));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 280, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Kelas.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
+        jComboBoxHari.setBackground(new java.awt.Color(218, 218, 218));
+        jComboBoxHari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senin", "Selasa", "Rabu", "Kamis", "Jumat" }));
+        jComboBoxHari.setBorder(null);
+        jComboBoxHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHariActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxHari, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 276, 300, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Tambah Kelas.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         HalamanUtama hu = new HalamanUtama(nama, npm);
@@ -104,7 +109,7 @@ import database.dbconnection;
 
     private void jButtonSimpanMatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSimpanMatkulActionPerformed
         // TODO add your handling code here:
-        String hari = jTextFieldHari.getText();
+        String hari = (String) jComboBoxHari.getSelectedItem();
         String mataKuliah = jTextFieldMataKuliah.getText();
         String jam = jTextFieldJam.getText();
 
@@ -135,6 +140,10 @@ import database.dbconnection;
     private void jTextFieldMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMataKuliahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMataKuliahActionPerformed
+
+    private void jComboBoxHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxHariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +186,22 @@ import database.dbconnection;
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -189,9 +214,9 @@ import database.dbconnection;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonSimpanMatkul;
+    private javax.swing.JComboBox<String> jComboBoxHari;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextFieldHari;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextFieldJam;
     private javax.swing.JTextField jTextFieldMataKuliah;
     // End of variables declaration//GEN-END:variables
