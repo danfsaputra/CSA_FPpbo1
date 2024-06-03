@@ -103,42 +103,43 @@ public class LihatTugas extends javax.swing.JFrame {
     }
     
     private void fetchAndDisplayTasks() {
-        try {
-            dbconnection koneksi = new dbconnection();
-            Connection conn = koneksi.getConnection();
-            String query = "SELECT t.deskripsi_tugas, t.tanggal_deadline, s.mata_kuliah " +
-                           "FROM tugas t " +
-                           "JOIN schedule s ON t.schedule_id = s.id " +
-                           "WHERE t.tanggal_deadline = ?";
-            PreparedStatement ps = conn.prepareStatement(query);
+    try {
+        dbconnection koneksi = new dbconnection();
+        Connection conn = koneksi.getConnection();
+        String query = "SELECT t.deskripsi_tugas, t.tanggal_deadline, s.mata_kuliah " +
+                       "FROM tugas t " +
+                       "JOIN schedule s ON t.schedule_id = s.id " +
+                       "WHERE t.tanggal_deadline = ? AND npm = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
 
-            // Get current date
-            LocalDate currentDate = LocalDate.now();
-            ps.setDate(1, java.sql.Date.valueOf(currentDate));
+        // Get current date
+        LocalDate currentDate = LocalDate.now();
+        ps.setDate(1, java.sql.Date.valueOf(currentDate));
+        ps.setString(2, npm);  // Set NPM parameter
 
-            ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
 
-            int index = 0;
-            while (rs.next() && index < tugasLabels.size()) {
-                String tugas = rs.getString("deskripsi_tugas");
-                String deadline = rs.getString("tanggal_deadline");
-                String mataKuliah = rs.getString("mata_kuliah");
-                tugasLabels.get(index).setText(mataKuliah + ": " + tugas + " (Deadline: " + deadline + ")");
-                index++;
-            }
-
-            rs.close();
-            ps.close();
-            conn.close();
-
-            // If there are less tasks than labels, hide the unused labels
-            for (int i = index; i < tugasLabels.size(); i++) {
-                tugasLabels.get(i).setVisible(false);
-            }
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        int index = 0;
+        while (rs.next() && index < tugasLabels.size()) {
+            String tugas = rs.getString("deskripsi_tugas");
+            String deadline = rs.getString("tanggal_deadline");
+            String mataKuliah = rs.getString("mata_kuliah");
+            tugasLabels.get(index).setText(mataKuliah + ": " + tugas + " (Deadline: " + deadline + ")");
+            index++;
         }
+
+        rs.close();
+        ps.close();
+        conn.close();
+
+        // If there are less tasks than labels, hide the unused labels
+        for (int i = index; i < tugasLabels.size(); i++) {
+            tugasLabels.get(i).setVisible(false);
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
     }
     
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
